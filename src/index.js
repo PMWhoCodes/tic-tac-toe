@@ -95,8 +95,10 @@ function Square(props) {
               `Go to move #${move} (${history[move].row},${history[move].column})` :
               'Go to game start';
             return (
-              <li key={move}>
-                <button onClick={() => this.jumpTo(move)}>{desc}</button>
+              <li key={move} >
+                <button 
+                  className={move === this.state.stepNumber? 'bold' : '' } 
+                  onClick={() => this.jumpTo(move)}>{desc}</button>
               </li>
             );
         });
