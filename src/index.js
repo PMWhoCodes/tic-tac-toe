@@ -17,31 +17,29 @@ function Square(props) {
 
     renderSquare(i) {
       return (
-        <Square 
+        <Square
+            key={i}
             value={this.props.squares[i]}
             onClick={() => this.props.onClick(i)}
         />
         );
     }
-  
-    render() {  
+
+    render() {
+      let board = []
+      for ( let row = 0; row < 3; row++){
+        let rows = []
+        for ( let col = 0; col < 3 ; col ++){
+          let squareId = (row*3+col);
+          let id = (row*3+col)
+          rows.push(this.renderSquare(squareId))
+        }
+        board.push(<div key={row} className="board-row">{rows}</div>)
+      }
+
       return (
         <div>
-          <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
-          </div>
+          {board}
         </div>
       );
     }
