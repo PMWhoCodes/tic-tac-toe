@@ -8,7 +8,8 @@ const Board = (props) => {
             let rows = []
             for ( let col = 0; col < 3 ; col ++){
             let squareId = (row*3+col);
-            rows.push(<Square
+            rows.push(
+            <Square
                 key={squareId}
                 value={props.squares[squareId]}
                 onClick={() => props.onClick(squareId)}
