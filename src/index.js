@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from 'react-dom/client';
 import './index.css'
-  
+import Board from "./components/board";
+
   class Game extends React.Component {
     constructor(props) {
         super(props);
