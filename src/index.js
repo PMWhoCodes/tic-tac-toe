@@ -1,17 +1,7 @@
 import React from "react";
 import ReactDOM from 'react-dom/client';
 import './index.css'
-
-function Square(props) {
-      return (
-        <button 
-            className="square" 
-            onClick={props.onClick}
-        >
-          {props.value}
-        </button>
-      );
-    }
+import Square from "./components/square";
   
   class Board extends React.Component {
 
@@ -31,7 +21,6 @@ function Square(props) {
         let rows = []
         for ( let col = 0; col < 3 ; col ++){
           let squareId = (row*3+col);
-          let id = (row*3+col)
           rows.push(this.renderSquare(squareId))
         }
         board.push(<div key={row} className="board-row">{rows}</div>)
