@@ -5,7 +5,8 @@ const Game = () => {
 
     const [history, setHistory] = useState([{ squares: Array(9).fill(null) }])
     const [stepNumber, setStepNumber] = useState(0);
-    const [xIsNext, setXIsNext] = useState(true)
+    const [xIsNext, setXIsNext] = useState(true);
+    const [isAscending, setIsAscending] = useState(true);
 
     const handleClick = (i) => {
         const timeInHistory = history.slice(0, stepNumber + 1);
@@ -34,6 +35,10 @@ const Game = () => {
         setHistory([{ squares: Array(9).fill(null) }]);
         setStepNumber(0);
         setXIsNext(true)
+    }
+
+    const toggleOrder = () => {
+        setIsAscending(!isAscending);
     }
 
     const current = history[stepNumber];
@@ -68,7 +73,8 @@ const Game = () => {
             </div>
             <div className="game-info">
                 <div>{status}</div>
-                <ul>{moves}</ul>
+                <button onClick={() => toggleOrder()}>Toggle order</button>
+                <ul>{isAscending? moves : moves.reverse()}</ul>
                 <button className="reset" onClick={() => reset() }>Reset</button>
             </div>
         </div>
