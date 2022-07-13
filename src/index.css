@@ -4,11 +4,20 @@ body {
   }
   
   ol, ul {
-    padding-left: 30px;
+    padding-left: 0px;
+    margin-bottom: 1rem;
+  }
+
+  li {
+      margin-bottom: 0.3rem;
   }
 
   li::marker {
       content: ''
+  }
+
+  .moves, .bold-moves {
+      min-width: 150px;
   }
   
   .board-row:after {
@@ -55,4 +64,13 @@ body {
   
   .bold {
       font-weight: bold;
+  }
+
+  .reset {
+      background-color: none;
+      border-radius: 8px;
+      border-style: line;
+      border-color: blue;
+      padding: 0.5rem;
+      min-width: 150px;
   }
