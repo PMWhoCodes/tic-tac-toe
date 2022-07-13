@@ -7,6 +7,7 @@ const Game = () => {
     const [stepNumber, setStepNumber] = useState(0);
     const [xIsNext, setXIsNext] = useState(true);
     const [isAscending, setIsAscending] = useState(true);
+    // TODO # set game against machine const [isAgainstMachine, setIsAgainstMachine] = useState(false);
 
     const handleClick = (i) => {
         const timeInHistory = history.slice(0, stepNumber + 1);
@@ -87,6 +88,7 @@ const Game = () => {
                 <button className="toggle" onClick={() => toggleOrder()}>Toggle order</button>
                 <ul>{isAscending ? moves : moves.reverse()}</ul>
                 <button className="reset" onClick={() => reset()}>Reset</button>
+                <button className="reset">Play against machine</button>
             </div>
         </div>
     );
