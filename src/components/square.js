@@ -1,7 +1,7 @@
 const Square = props => {
     return (
         <button
-            className="square"
+            className={"square " + props.modifier}
             onClick={props.onClick}
         >
             {props.value}

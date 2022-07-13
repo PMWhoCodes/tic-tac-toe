@@ -42,7 +42,13 @@ const Game = () => {
     }
 
     const current = history[stepNumber];
-    const winner = calculateWinner(current.squares);
+    const winner = (
+        calculateWinner(current.squares) == null ?
+            null :
+            current.squares[calculateWinner(current.squares)[0]]
+    );
+
+    const winnerLine = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
         const desc = move ?
@@ -68,14 +74,15 @@ const Game = () => {
             <div className="game-board">
                 <Board
                     squares={current.squares}
+                    winnerLine={winnerLine}
                     onClick={(i) => handleClick(i)}
                 />
             </div>
             <div className="game-info">
                 <div>{status}</div>
                 <button onClick={() => toggleOrder()}>Toggle order</button>
-                <ul>{isAscending? moves : moves.reverse()}</ul>
-                <button className="reset" onClick={() => reset() }>Reset</button>
+                <ul>{isAscending ? moves : moves.reverse()}</ul>
+                <button className="reset" onClick={() => reset()}>Reset</button>
             </div>
         </div>
     );
@@ -95,7 +102,7 @@ function calculateWinner(squares) {
     for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            return squares[a];
+            return [a, b, c];
         }
     }
     return null;
