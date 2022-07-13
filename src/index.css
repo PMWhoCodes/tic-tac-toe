@@ -6,6 +6,10 @@ body {
   ol, ul {
     padding-left: 30px;
   }
+
+  li::marker {
+      content: ''
+  }
   
   .board-row:after {
     clear: both;
