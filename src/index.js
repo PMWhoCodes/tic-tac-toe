@@ -1,86 +1,76 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactDOM from 'react-dom/client';
 import './index.css'
 import Board from "./components/board";
 
-  class Game extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            history: [{
-                squares: Array(9).fill(null),
-            }],
-            stepNumber: 0,
-            xIsNext: true,
-        }
-    }
+  const Game = () => {
+    
+    const [history,setHistory] = useState([{squares: Array(9).fill(null)}])
+    const [stepNumber, setStepNumber] = useState(0);
+    const [xIsNext, setXIsNext] = useState(true)
 
-    handleClick(i) {
-        const history = this.state.history.slice(0, this.state.stepNumber +1);
+    const handleClick = (i) => {
+        const timeInHistory = history.slice(0, stepNumber +1);
         const current = history[history.length -1];
         const squares = current.squares.slice();
         if (calculateWinner(squares) || squares[i]){
             return;
         }
-        squares[i] = this.state.xIsNext ? 'X' : 'O';
-        this.setState({
-            history: history.concat([{
-                squares: squares,
-                row: Math.floor(i /3 ) +1,
-                column: i%3 + 1
-            }]),
-            stepNumber: history.length,
-            xIsNext: !this.state.xIsNext,
-        });
+        squares[i] = xIsNext ? 'X' : 'O';
+        setHistory(timeInHistory.concat([{
+          squares: squares,
+          row: Math.floor(i /3 ) +1,
+          column: i%3 + 1
+          }])
+        );
+        setStepNumber(history.length);
+        setXIsNext(!xIsNext)
     }
 
-    jumpTo(step) {
-        this.setState({
-            stepNumber: step,
-            xIsNext: (step % 2) === 0,
-        });
+    const jumpTo = (step) => {
+      setXIsNext( step % 2 === 0);
+      setStepNumber(step)
     }
 
-    render() {
-        const history = this.state.history;
-        const current = history[this.state.stepNumber];
-        const winner = calculateWinner(current.squares);
+    const current = history[stepNumber];
+    const winner = calculateWinner(current.squares);
 
-        const moves = history.map((step, move) => {
-            const desc = move ?
-              `Go to move #${move} (${history[move].row},${history[move].column})` :
-              'Go to game start';
-            return (
-              <li key={move} >
-                <button 
-                  className={move === this.state.stepNumber? 'bold' : '' } 
-                  onClick={() => this.jumpTo(move)}>{desc}</button>
-              </li>
-            );
-        });
+    const moves = history.map((step, move) => {
+        const desc = move ?
+          `Go to move #${move} (${history[move].row},${history[move].column})` :
+          'Go to game start';
+        return (
+          <li key={move} >
+            <button 
+              className={move === stepNumber? 'bold' : '' } 
+              onClick={() => jumpTo(move)}>{desc}</button>
+          </li>
+        );
+    });
 
-        let status;
-        if (winner) {
-            status = 'Winner ' + winner;
-        } else {
-            status = 'Next player ' + (this.state.xIsNext ? 'X' : 'O')
-        }
-      return (
-        <div className="game">
-          <div className="game-board">
-            <Board 
-                squares={current.squares}
-                onClick={(i) => this.handleClick(i)}
-            />
-          </div>
-          <div className="game-info">
-            <div>{status}</div>
-            <ol>{moves}</ol>
-          </div>
-        </div>
-      );
+    let status;
+    if (winner) {
+        status = 'Winner ' + winner;
+    } else {
+        status = 'Next player ' + (xIsNext ? 'X' : 'O')
     }
-  }  
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board 
+            squares={current.squares}
+            onClick={(i) => handleClick(i)}
+        />
+      </div>
+      <div className="game-info">
+        <div>{status}</div>
+        <ol>{moves}</ol>
+      </div>
+    </div>
+  );
+  }
+  
+  
   const root = ReactDOM.createRoot(document.getElementById("root"));
   root.render(<Game />);
 
@@ -103,4 +93,3 @@ import Board from "./components/board";
     }
     return null;
   }
-  
