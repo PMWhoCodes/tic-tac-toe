@@ -30,6 +30,12 @@ const Game = () => {
         setStepNumber(step)
     }
 
+    const reset = () => {
+        setHistory([{ squares: Array(9).fill(null) }]);
+        setStepNumber(0);
+        setXIsNext(true)
+    }
+
     const current = history[stepNumber];
     const winner = calculateWinner(current.squares);
 
@@ -63,6 +69,7 @@ const Game = () => {
             <div className="game-info">
                 <div>{status}</div>
                 <ul>{moves}</ul>
+                <button className="reset" onClick={() => reset() }>Reset</button>
             </div>
         </div>
     );
