@@ -66,9 +66,13 @@ const Game = () => {
     let status;
     if (winner) {
         status = 'Winner ' + winner;
-    } else {
+    } else if(moves.length -1 === current.squares.length) {
+        status = `It's a draw`
+    }
+    else {
         status = 'Next player ' + (xIsNext ? 'X' : 'O')
     }
+
     return (
         <div className="game">
             <div className="game-board">
