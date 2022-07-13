@@ -1,11 +1,13 @@
+
+
 body {
     font: 14px "Century Gothic", Futura, sans-serif;
     margin: 20px;
+    --main-button-color: #0b949e;
   }
   
-  ol, ul {
+  ol, ul, div {
     padding-left: 0px;
-    margin-bottom: 1rem;
   }
 
   li {
@@ -16,8 +18,18 @@ body {
       content: ''
   }
 
+  button {
+      border-style: none;
+  }
+
+  .toggle {
+      min-width: 150px;
+      border-radius: 8px;
+  }
+
   .moves, .bold-moves {
       min-width: 150px;
+      border-radius: 8px;
   }
   
   .board-row:after {
@@ -27,11 +39,12 @@ body {
   }
   
   .status {
-    margin-bottom: 10px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
   }
   
   .square {
-    background: #fff;
+    background: #ebebeb;
     border: 1px solid #999;
     float: left;
     font-size: 24px;
@@ -71,10 +84,9 @@ body {
   }
 
   .reset {
-      background-color: none;
+      background-color: var(--main-button-color);
       border-radius: 8px;
-      border-style: line;
-      border-color: blue;
+      border-style: none;
       padding: 0.5rem;
       min-width: 150px;
   }

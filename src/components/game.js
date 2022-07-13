@@ -70,7 +70,7 @@ const Game = () => {
         status = `It's a draw`
     }
     else {
-        status = 'Next player ' + (xIsNext ? 'X' : 'O')
+        status = 'Next player: ' + (xIsNext ? 'X' : 'O')
     }
 
     return (
@@ -83,8 +83,8 @@ const Game = () => {
                 />
             </div>
             <div className="game-info">
-                <div>{status}</div>
-                <button onClick={() => toggleOrder()}>Toggle order</button>
+                <div className="status">{status}</div>
+                <button className="toggle" onClick={() => toggleOrder()}>Toggle order</button>
                 <ul>{isAscending ? moves : moves.reverse()}</ul>
                 <button className="reset" onClick={() => reset()}>Reset</button>
             </div>
