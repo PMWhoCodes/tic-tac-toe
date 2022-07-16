@@ -1,4 +1,15 @@
-# Getting Started with Create React App
+# Possible Future Enhancements
+- [] Migrate to typescript
+- [] Build with Docker image
+- [] Add a component library - such as chakra, material or ant
+- [] Refactor styling - Use CSS-in-JS, styled components or stitches
+- [] Migrate to Vite or Next JS - create as branches to leave as examples
+
+# Possible Future Features
+- [] Select option to Play against the machine
+- [] Generate simple server that allows multiplayer
+
+# Previous instructions - Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
