@@ -1,9 +1,16 @@
+import * as React from "react";
 import { useState } from "react";
 import Board from "./board";
 
+type History = {
+    squares: string[];
+    row: number | undefined;
+    column: number | undefined;
+}
+
 const Game = () => {
 
-    const [history, setHistory] = useState([{ squares: Array(9).fill(null) }])
+    const [history, setHistory] = useState([{ squares: Array(9).fill(null) , row: 0, column: 0 }])
     const [stepNumber, setStepNumber] = useState(0);
     const [xIsNext, setXIsNext] = useState(true);
     const [isAscending, setIsAscending] = useState(true);
@@ -12,7 +19,7 @@ const Game = () => {
     const handleClick = (i) => {
         const timeInHistory = history.slice(0, stepNumber + 1);
         const current = history[history.length - 1];
-        const squares = current.squares.slice();
+        const squares: any[] = current.squares.slice();
         if (calculateWinner(squares) || squares[i]) {
             return;
         }
@@ -33,7 +40,7 @@ const Game = () => {
     }
 
     const reset = () => {
-        setHistory([{ squares: Array(9).fill(null) }]);
+        setHistory([{ squares: Array(9).fill(null) , row: 0, column: 0 }]);
         setStepNumber(0);
         setXIsNext(true)
     }
@@ -43,15 +50,14 @@ const Game = () => {
     }
 
     const current = history[stepNumber];
-    const winner = (
-        calculateWinner(current.squares) == null ?
+    const winnerLine = calculateWinner(current.squares);
+    const winner: any = (
+        winnerLine == null ?
             null :
-            current.squares[calculateWinner(current.squares)[0]]
+            current.squares[winnerLine[0]]
     );
 
-    const winnerLine = calculateWinner(current.squares);
-
-    const moves = history.map((step, move) => {
+    const moves: React.ReactElement[] = history.map((step, move) => {
         const desc = move ?
             `Go to move #${move} (${history[move].row},${history[move].column})` :
             'Go to game start';

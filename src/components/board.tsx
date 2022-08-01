@@ -1,15 +1,22 @@
+import * as React from "react";
 import Square from "./square";
 
-const Board = (props) => {
+type BoardProps = {
+    squares: string[];
+    winnerLine: number[] | null;
+    onClick: (id: number) => void;
+}
 
-    let board = [];
+const Board = (props: BoardProps) => {
+
+    let board: React.ReactElement[] = [];
     for (let row = 0; row < 3; row++) {
-        let rows = []
+        let rows: React.ReactElement[] = []
         for (let col = 0; col < 3; col++) {
             let squareId = (row * 3 + col);
             let isWinner = false;
-            if (props.winnerLine !== null){
-                if (props.winnerLine.includes(squareId) === true){
+            if (props.winnerLine !== null) {
+                if (props.winnerLine.includes(squareId) === true) {
                     isWinner = true;
                 }
             }
