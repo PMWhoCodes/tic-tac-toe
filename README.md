@@ -1,13 +1,13 @@
 # Possible Future Enhancements
-- [ ] Migrate to typescript
-- [ ] Build with Docker image
+- [x] Migrate to typescript
+- [ ] Refactor board to CSS grid
 - [ ] Add a component library - such as chakra, material or ant
 - [ ] Refactor styling - Use CSS-in-JS, styled components or stitches
-- [ ] Migrate to Vite or Next JS - create as branches to leave as examples
 
 # Possible Future Features
 - [ ] Select option to Play against the machine
-- [ ] Generate simple server that allows multiplayer
+- [ ] Allow name selection for multiplayer and start screen
+- [ ] Add animation for winner
 
 # Previous instructions - Getting Started with Create React App
 
