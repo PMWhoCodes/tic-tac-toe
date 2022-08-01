@@ -1,7 +1,8 @@
 # Possible Future Enhancements
 - [x] Migrate to typescript
+- [ ] Move state to separate component
 - [ ] Refactor board to CSS grid
-- [ ] Add a component library - such as chakra, material or ant
+- [ ] Add a UI library - such as chakra, material
 - [ ] Refactor styling - Use CSS-in-JS, styled components or stitches
 
 # Possible Future Features
