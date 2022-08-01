@@ -2,11 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import Board from "./board";
 
-type History = {
-    squares: string[];
-    row: number | undefined;
-    column: number | undefined;
-}
+
 
 const Game = () => {
 
