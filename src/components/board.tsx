@@ -9,11 +9,11 @@ type BoardProps = {
 
 const Board = (props: BoardProps) => {
 
-    let board: React.ReactElement[] = [];
+    const board: React.ReactElement[] = [];
     for (let row = 0; row < 3; row++) {
-        let rows: React.ReactElement[] = []
+        const rows: React.ReactElement[] = []
         for (let col = 0; col < 3; col++) {
-            let squareId = (row * 3 + col);
+            const squareId = (row * 3 + col);
             let isWinner = false;
             if (props.winnerLine !== null) {
                 if (props.winnerLine.includes(squareId) === true) {
