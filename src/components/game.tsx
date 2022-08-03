@@ -15,7 +15,7 @@ const Game = () => {
     const handleClick = (i) => {
         const timeInHistory = history.slice(0, stepNumber + 1);
         const current = history[history.length - 1];
-        const squares: any[] = current.squares.slice();
+        const squares = current.squares.slice();
         if (calculateWinner(squares) || squares[i]) {
             return;
         }
@@ -47,7 +47,7 @@ const Game = () => {
 
     const current = history[stepNumber];
     const winnerLine = calculateWinner(current.squares);
-    const winner: any = (
+    const winner = (
         winnerLine == null ?
             null :
             current.squares[winnerLine[0]]
